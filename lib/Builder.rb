@@ -10,7 +10,9 @@ class Adventurer
     @name = name
     @@all << self
   end
-  
+
+
+
   # def self.lookup(option)
   #   until 
   #   if ABCs.ancestries.keys.include?(option)

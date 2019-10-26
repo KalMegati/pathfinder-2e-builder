@@ -31,19 +31,23 @@ class ABCs
   def summarize(option, aspect) # => grabs flavor blurb
     page = "https://2e.aonprd.com/"+self.send("#{aspect}")[option]
     blurb = Nokogiri::HTML(open(page))
-    binding.pry
+    #binding.pry
     if page.include?("Backgrounds")
       puts blurb.text.match(/pg. 6\d(.+)Choose/)[1]
     else
       puts blurb.css("i")[1].text
     end
   end
-  
+
+  def confirm(option, aspect)
+    $abcs.send("#{aspect}").include?(option)
+  end  
+
 end
 
-why = ABCs.new
+#why = ABCs.new
 
-why.summarize("Dwarf", "ancestries")
+#why.summarize("Dwarf", "ancestries")
 
 #binding.pry
 

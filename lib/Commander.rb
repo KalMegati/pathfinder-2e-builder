@@ -48,7 +48,7 @@ def sel_aspect(aspect, character)
   
   puts "Select a #{aspect.to_s.capitalize}"
   
-  choice = gets.chomp.capitalize
+  choice = gets.chomp.capitalize until $abcs.confirm(choice, plu_aspect)
   
   $abcs.summarize(choice, plu_aspect)
   
