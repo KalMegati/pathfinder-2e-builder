@@ -40,7 +40,8 @@ class ABCs
   end
 
   def confirm(option, aspect)
-    $abcs.send("#{aspect}").include?(option)
+    return true if $abcs.send("#{aspect}").include?(option)
+    puts "Choose from the list of #{aspect} above."
   end  
 
 end

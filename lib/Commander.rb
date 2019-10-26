@@ -75,7 +75,3 @@ def prompter
 end
 
 prompter
-
-class Writer
-  
-end
