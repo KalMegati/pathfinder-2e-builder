@@ -2,29 +2,34 @@ require_relative 'Archivist.rb'
 
 class Adventurer
   
-  attr_accessor :name, :ancestry, :background, :class, :description
+  attr_accessor :name, :ancestries, :backgrounds, :classes, :description
   
   @@all = []
   
   def initialize(name)
     @name = name
+    @description = ""
     @@all << self
   end
 
+  def writer
 
+    puts "Tell your tale."
 
-  # def self.lookup(option)
-  #   until 
-  #   if ABCs.ancestries.keys.include?(option)
-      
-  #   elsif 
-      
-  #   elsif
+    description << gets.chomp
+
+  end
+
+  def rewriter
     
-  #   else
-  #     puts
-  #   end
-  #   @@all.select{ |char| char.send("#{aspect}") == option }
-  # end
-  
+    description.clear
+
+  end
+
+  def self.all
+    @@all
+  end
+
 end
+
+binding.pry

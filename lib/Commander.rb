@@ -1,6 +1,8 @@
 require_relative "Archivist.rb"
 require_relative "Builder.rb"
 
+class Commander
+
 def startup
   
   puts "A legend begins with a name."
@@ -12,7 +14,7 @@ end
 def sel_concept
   
   name = gets.chomp
-  $abcs = ABCs.new
+  @abcs = ABCs.new
   Adventurer.new(name)
   
 end
@@ -23,11 +25,11 @@ def sel_screen(character)
   puts "|" 
   puts "| #{character.name}"
   puts "|_______________ ___ ___ ___ __ __ __ _ _ _"
-  puts "|" if character.ancestry
-  puts "| Ancestry:   #{character.ancestry}" if character.ancestry
-  puts "| Background: #{character.background}" if character.background
-  puts "| Class:      #{character.class}" if character.class
-  puts "|" if character.class
+  puts "|" if character.ancestries
+  puts "| Ancestry:   #{character.ancestries}" if character.ancestries
+  puts "| Background: #{character.backgrounds}" if character.backgrounds
+  puts "| Class:      #{character.classes}" if character.classes
+  puts "|" if character.classes
   puts "'"
   puts "'"
   puts "'"
@@ -36,21 +38,13 @@ end
 
 def sel_aspect(aspect, character)
   
-  if aspect == :ancestry
-    plu_aspect = :ancestries
-  elsif aspect == :background
-    plu_aspect = :backgrounds
-  elsif aspect == :class
-    plu_aspect = :classes
-  end
-  
-  puts $abcs.send(plu_aspect).keys
+  puts @abcs.send(aspect).keys
   
   puts "Select a #{aspect.to_s.capitalize}"
   
-  choice = gets.chomp.capitalize until $abcs.confirm(choice, plu_aspect)
+  choice = gets.chomp.capitalize until @abcs.confirm(choice, aspect)
   
-  $abcs.summarize(choice, plu_aspect)
+  @abcs.summarize(choice, aspect)
   
   puts "Will you play a #{choice}? Y/N"
   
@@ -68,10 +62,12 @@ def prompter
   startup
   character = sel_concept
   sel_screen(character)
-  sel_aspect(:ancestry, character)
-  sel_aspect(:background, character)
-  sel_aspect(:class, character)
+  sel_aspect(:ancestries, character)
+  sel_aspect(:backgrounds, character)
+  sel_aspect(:classes, character)
   sel_screen(character)
 end
 
-prompter
+end
+
+Commander.new.prompter
