@@ -6,6 +6,7 @@ class Commander
   attr_reader :archivist, :builder
 
   def titlecard
+    puts "__________________________________________________________________"
     puts "                __  .__     _____.__            .___             "
     puts "  ___________ _/  |_|  |___/ ____\\__| ____    __| _/___________  "
     puts "  \\____ \\__  \\\\   __\\  |  \\   __\\|  |/    \\  / __ |/ __ \\_  __ \\ "
@@ -41,17 +42,23 @@ class Commander
         print character.classes
         puts
       }
+      puts "Press ENTER to return to the main menu."
+      gets
       menucard
     elsif menu == 3
       puts "Display which character?"
       char_name = gets.chomp
       character = Builder.all.detect{|char|char.name == char_name}
-      sel_screen(character)
+      if character
+        sel_screen(character)
+      else
+        puts "That character does not exist."
+      end
+      puts "Press ENTER to return to the main menu."
+      gets
       menucard
     elsif menu == 4
-      puts 
-      puts "Farewell new adventurers!"
-      puts
+      terminus
     else
       puts "..............."      
       puts ":INVALID INPUT:"
@@ -60,6 +67,21 @@ class Commander
       menucard
     end
 
+  end
+
+  def terminus
+    puts
+    puts "Fare thee well, and may your ventures be magical!"
+    puts
+    puts "__________________________________________________________________"
+    puts "                __  .__     _____.__            .___             "
+    puts "  ___________ _/  |_|  |___/ ____\\__| ____    __| _/___________  "
+    puts "  \\____ \\__  \\\\   __\\  |  \\   __\\|  |/    \\  / __ |/ __ \\_  __ \\ "
+    puts "  |  |_> > __ \\|  | |   Y  \\  |  |  |   |  \\/ /_/ \\  ___/|  | \\/ "
+    puts "  |   __(____  /__| |___|  /__|  |__|___|  /\\____ |\\___  >__|    "
+    puts "  |__|       \\/          \\/              \\/      \\/    \\/        "
+    puts "__________________________________________________________________"
+    puts
   end
 
   def startup
@@ -97,11 +119,9 @@ class Commander
 
   def sel_aspect(aspect, character)
     
-    @archivist.send(aspect).keys.each_with_index { |option, index| puts "#{index} - #{option}"}
+    @archivist.send(aspect).keys.each_with_index { |option, index| puts "#{index+1} - #{option}"}
     
-    puts "Select a #{aspect.to_s.capitalize}"
-    
-    choice = gets.chomp.capitalize until @archivist.confirm(choice, aspect)
+    choice = gets.chomp until @archivist.confirm(choice, aspect)
     
     @archivist.summarize(choice, aspect)
     
@@ -135,5 +155,3 @@ hell = Commander.new
 
 hell.titlecard
 hell.menucard
-
-#Commander.new.prompter
