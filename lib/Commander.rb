@@ -40,7 +40,7 @@ end
 
 def sel_aspect(aspect, character)
   
-  puts @archivist.send(aspect).keys
+  @archivist.send(aspect).keys.each_with_index { |option, index| puts "#{index} - #{option}"}
   
   puts "Select a #{aspect.to_s.capitalize}"
   
