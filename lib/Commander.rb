@@ -33,7 +33,13 @@ class Commander
     if menu == 1
       prompter
     elsif menu == 3
-      puts builder.all
+      Builder.all.each {|character|
+        print character.name + ": "
+        print character.ancestries + ", "
+        print character.backgrounds + ", "
+        print character.classes
+        puts
+      }
     else
       puts "..............."      
       puts ":INVALID INPUT:"
