@@ -2,20 +2,20 @@ require 'pry'
 require 'open-uri'
 require 'nokogiri'
 
-class ABCs
+class Archivist
   
   attr_reader :ancestries, :backgrounds, :classes
   
   @@source = "https://2e.aonprd.com/"
   
-  def archivist(aspect)
-    Nokogiri::HTML(open(@@source+aspect+'.aspx'))
+  def page_finder(aspect)
+    Nokogiri::HTML(open(@@source+aspect.to_s.capitalize+'.aspx'))
   end
   
   def hasher(aspect, header)
     dictionary = {}
-    archivist(aspect).css("#{header} a").each{ |role|
-      if role.attribute("href").value.include?("#{aspect}.aspx?ID")
+    page_finder(aspect).css("#{header} a").each{ |role|
+      if role.attribute("href").value.include?("#{aspect.to_s.capitalize}.aspx?ID")
         dictionary[role.text] = role.attribute("href").value
       end
     }
@@ -23,9 +23,9 @@ class ABCs
   end
   
   def initialize
-    @ancestries = hasher("Ancestries", "h2")
-    @backgrounds = hasher("Backgrounds", "h1")
-    @classes = hasher("Classes", "h1")
+    @ancestries = hasher(:ancestries, "h2")
+    @backgrounds = hasher(:backgrounds, "h1")
+    @classes = hasher(:classes, "h1")
   end
   
   def summarize(option, aspect) # => grabs flavor blurb
@@ -45,11 +45,3 @@ class ABCs
   end  
 
 end
-
-#why = ABCs.new
-
-#why.summarize("Dwarf", "ancestries")
-
-#binding.pry
-
-#hell = blurb.text.scan(/Ability Boost|Strength|Dexterity|Constitution|Intelligence|Wisdom|Charisma|Ability Flaw|Languages/)

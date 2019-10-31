@@ -1,6 +1,6 @@
 require_relative 'Archivist.rb'
 
-class Adventurer
+class Builder
   
   attr_accessor :name, :ancestries, :backgrounds, :classes, :description
   
@@ -31,5 +31,3 @@ class Adventurer
   end
 
 end
-
-binding.pry

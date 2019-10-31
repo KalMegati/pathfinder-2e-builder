@@ -3,6 +3,8 @@ require_relative "Builder.rb"
 
 class Commander
 
+  attr_reader :archivist, :builder
+
 def startup
   
   puts "A legend begins with a name."
@@ -14,8 +16,8 @@ end
 def sel_concept
   
   name = gets.chomp
-  @abcs = ABCs.new
-  Adventurer.new(name)
+  @archivist = Archivist.new
+  @builder = Builder.new(name)
   
 end
 
@@ -38,13 +40,13 @@ end
 
 def sel_aspect(aspect, character)
   
-  puts @abcs.send(aspect).keys
+  puts @archivist.send(aspect).keys
   
   puts "Select a #{aspect.to_s.capitalize}"
   
-  choice = gets.chomp.capitalize until @abcs.confirm(choice, aspect)
+  choice = gets.chomp.capitalize until @archivist.confirm(choice, aspect)
   
-  @abcs.summarize(choice, aspect)
+  @archivist.summarize(choice, aspect)
   
   puts "Will you play a #{choice}? Y/N"
   
@@ -61,11 +63,11 @@ end
 def prompter
   startup
   character = sel_concept
-  sel_screen(character)
-  sel_aspect(:ancestries, character)
-  sel_aspect(:backgrounds, character)
-  sel_aspect(:classes, character)
-  sel_screen(character)
+  sel_screen(@builder)
+  sel_aspect(:ancestries, @builder)
+  sel_aspect(:backgrounds, @builder)
+  sel_aspect(:classes, @builder)
+  sel_screen(@builder)
 end
 
 end
