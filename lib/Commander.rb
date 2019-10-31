@@ -32,6 +32,8 @@ class Commander
     
     if menu == 1
       prompter
+    elsif menu == 3
+      puts builder.all
     else
       puts "..............."      
       puts ":INVALID INPUT:"
@@ -105,6 +107,9 @@ class Commander
     sel_aspect(:backgrounds, @builder)
     sel_aspect(:classes, @builder)
     sel_screen(@builder)
+    puts "Press ENTER to return to the main menu."
+    gets
+    menucard
   end
 
 end
