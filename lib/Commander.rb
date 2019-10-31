@@ -22,9 +22,9 @@ class Commander
 
   def menucard
     puts " 1 - build new character"
-    puts " 2 - create or modify character description"
-    puts " 3 - list all existing characters"
-    puts " 4 - search existing characters by aspect"
+    puts " 2 - list all existing characters"
+    puts " 3 - display card of existing character"
+    puts " 4 - exit application"
     puts
     print "Enter a number from the list above: "
 
@@ -32,7 +32,8 @@ class Commander
     
     if menu == 1
       prompter
-    elsif menu == 3
+      menucard
+    elsif menu == 2
       Builder.all.each {|character|
         print character.name + ": "
         print character.ancestries + ", "
@@ -40,6 +41,17 @@ class Commander
         print character.classes
         puts
       }
+      menucard
+    elsif menu == 3
+      puts "Display which character?"
+      char_name = gets.chomp
+      character = Builder.all.detect{|char|char.name == char_name}
+      sel_screen(character)
+      menucard
+    elsif menu == 4
+      puts 
+      puts "Farewell new adventurers!"
+      puts
     else
       puts "..............."      
       puts ":INVALID INPUT:"
@@ -115,7 +127,6 @@ class Commander
     sel_screen(@builder)
     puts "Press ENTER to return to the main menu."
     gets
-    menucard
   end
 
 end
