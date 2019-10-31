@@ -6,12 +6,40 @@ class Commander
   attr_reader :archivist, :builder
 
   def titlecard
-    puts "               __  .__     _____.__            .___             "
-    puts " ___________ _/  |_|  |___/ ____\\__| ____    __| _/___________  "
-    puts " \\____ \\__  \\\\   __\\  |  \\   __\\|  |/    \\  / __ |/ __ \\_  __ \\ "
-    puts " |  |_> > __ \\|  | |   Y  \\  |  |  |   |  \\/ /_/ \\  ___/|  | \\/ "
-    puts " |   __(____  /__| |___|  /__|  |__|___|  /\\____ |\\___  >__|    "
-    puts " |__|       \\/          \\/              \\/      \\/    \\/        "
+    puts "                __  .__     _____.__            .___             "
+    puts "  ___________ _/  |_|  |___/ ____\\__| ____    __| _/___________  "
+    puts "  \\____ \\__  \\\\   __\\  |  \\   __\\|  |/    \\  / __ |/ __ \\_  __ \\ "
+    puts "  |  |_> > __ \\|  | |   Y  \\  |  |  |   |  \\/ /_/ \\  ___/|  | \\/ "
+    puts "  |   __(____  /__| |___|  /__|  |__|___|  /\\____ |\\___  >__|    "
+    puts "  |__|       \\/          \\/              \\/      \\/    \\/        "
+    puts "__________________________________________________________________"
+    puts
+    puts "Welcome to Pathfinder, a game of adventure and imagination."
+    puts "This application will help you organize basic character ideas."
+    puts "__________________________________________________________________"
+    puts 
+  end
+
+  def menucard
+    puts " 1 - build new character"
+    puts " 2 - create or modify character description"
+    puts " 3 - list all existing characters"
+    puts " 4 - search existing characters by aspect"
+    puts
+    print "Enter a number from the list above: "
+
+    menu = gets.chomp.to_i
+    
+    if menu == 1
+      prompter
+    else
+      puts "..............."      
+      puts ":INVALID INPUT:"
+      puts "```````````````"
+      puts
+      menucard
+    end
+
   end
 
   def startup
@@ -81,6 +109,9 @@ class Commander
 
 end
 
-Commander.new.titlecard
+hell = Commander.new
+
+hell.titlecard
+hell.menucard
 
 #Commander.new.prompter
