@@ -1,6 +1,13 @@
 require "p2e_builder/version"
+require_relative "Archivist.rb"
+require_relative "Builder.rb"
+require_relative "Commander.rb"
 
-module P2eBuilder
-  class Error < StandardError; end
-  # Your code goes here...
+class PeBuilder
+  def self.program_runner
+    start = Commander.new
+
+    start.titlecard
+    start.menucard
+  end
 end

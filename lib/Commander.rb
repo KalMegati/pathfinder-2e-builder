@@ -1,5 +1,5 @@
-require_relative "Archivist.rb"
-require_relative "Builder.rb"
+# require_relative "Archivist.rb"
+# require_relative "Builder.rb"
 
 class Commander
 
@@ -150,8 +150,3 @@ class Commander
   end
 
 end
-
-hell = Commander.new
-
-hell.titlecard
-hell.menucard
