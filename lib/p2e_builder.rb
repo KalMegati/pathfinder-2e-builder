@@ -1,4 +1,4 @@
-require "p2e_builder/version"
+require_relative "p2e_builder/version"
 require_relative "Archivist.rb"
 require_relative "Builder.rb"
 require_relative "Commander.rb"
