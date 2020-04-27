@@ -59,7 +59,6 @@ class Archivist
   def clas_stats(option, aspect) # => grabs stats from class
     page = "https://2e.aonprd.com/"+self.send("#{aspect}")[option]
     blurb = Nokogiri::HTML(open(page))
-    binding.pry
     blurb.css("b")[2].text.match(@@clas_parser)
   end
 
