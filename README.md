@@ -18,7 +18,7 @@ To run the application in your terminal, enter the command:
 
 ## Usage
 
-Building a character in Pathfinder 2nd Edition is a follows an ABC pneumonic: Ancestry, Background, Class. Ancestry refers to the character's parentage and often includes assumptions about the culture and environment they were raised in. Background describes the role the character has had in society before the point of the adventure's beginning, such as a job or social status. Class determines the abilities, mundane and magical, that a character will learn as they continue on their adventure. Selecting an option for any of these aspects will provide a short blurb explaining the option further before asking confirmation if you want to play a character using this option.
+Building a character in Pathfinder 2nd Edition is a follows an ABC pneumonic: Ancestry, Background, Class. Ancestry refers to the character's parentage and often includes assumptions about the culture and environment they were raised in. Background describes the role the character has had in society before the point of the adventure's beginning, such as a job or social status. Class determines the abilities, mundane and magical, that a character will learn as they continue on their adventure. Selecting an option (by typing out the full name of the option; number selection is not implemented yet) for any of these aspects will provide a short blurb explaining the option further before asking confirmation if you want to play a character using this option.
 
 The remaining menu options will allow you to display all currently created characters, and selectively display created character cards.
 
